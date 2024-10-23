@@ -21,7 +21,7 @@ repository               : "mrteymoorian.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "my_photo.jpg"
+  avatar           : "profile.png"
   name             : "Mohammadreza Teymoorianfard"
   pronouns         : "he/him"  
   bio              : "Ph.D. student at the University of Massachusetts Amherst."
