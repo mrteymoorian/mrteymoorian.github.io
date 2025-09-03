@@ -11,6 +11,10 @@ author_profile: true
 
 ## Publications
 
+- Jeong, H., **Teymoorianfard, M.**, Kumar, A., Houmansadr, A. and Badasarian, E., 2025. **Network-Level Prompt and Trait Leak-
+age in Local Research Agents.** arXiv preprint arXiv:2508.20282.
+[\[Code\]](https://github.com/umass-aisec/wra) / [\[Pdf\]](https://www.arxiv.org/pdf/2508.20282)
+
 - **Teymoorianfard, M.**, Ma, S. and Houmansadr, A., 2025. **VIDSTAMP: A Temporally-Aware Watermark for Ownership and Integrity in Video Diffusion Models.** arXiv preprint arXiv:2505.01406.
 [\[Code\]](https://github.com/SPIN-UMass/VidStamp) / [\[Pdf\]](https://arxiv.org/pdf/2505.01406)
 
