@@ -11,11 +11,11 @@ author_profile: true
 
 ## Publications
 
--**Teymoorianfard, M.**, Monteuuis, J. P., Petit, J., and Houmansadr, A. (2026). **ReasonBreak: Probing Vulnerabilities in Reasoning-
+- **Teymoorianfard, M.**, Monteuuis, J. P., Petit, J., and Houmansadr, A. (2026). **ReasonBreak: Probing Vulnerabilities in Reasoning-
 Enabled Vision-Language-Action Models for Autonomous Driving.** arXiv preprint arXiv:2605.29114.
 [\[Pdf\]](https://arxiv.org/pdf/2605.29114)
 
--Mittapalli, V., Dani, S. J., Pilli, S. S., Ansu, S., **Teymoorianfard, M.**, Dernoncourt, F., ... and Ahmed, N. K. (2026). **TRACE: Tra-
+- Mittapalli, V., Dani, S. J., Pilli, S. S., Ansu, S., **Teymoorianfard, M.**, Dernoncourt, F., ... and Ahmed, N. K. (2026). **TRACE: Tra-
 jectory Reasoning through Adaptive Cross-Step Evidence Aggregation for LLM Agents**. arXiv preprint arXiv:2606.07054.
 [\[Pdf\]](https://arxiv.org/pdf/2606.07054)
 
