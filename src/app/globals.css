@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Georgia CDN";
-  src: url("https://jialeliu.com/fonts/georgiab.woff2") format("woff2");
+  src: url("/fonts/georgiab.woff2") format("woff2");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
