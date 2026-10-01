@@ -1,0 +1,83 @@
+% Custom fields understood by this site (stripped from the displayed BibTeX):
+%   selected    = {true}   -> shown under "Selected Publications" on the homepage
+%   pdf         = {url}    -> "PDF" button
+%   code        = {url}    -> "Code" button
+%   description = {...}    -> short blurb shown on the card
+%   preview     = {file}   -> image in public/papers/
+% Author matching "Mohammadreza Teymoorianfard" is highlighted automatically.
+
+@misc{teymoorianfard2026reasonbreak,
+  selected = {true},
+  title = {ReasonBreak: Probing Vulnerabilities in Reasoning-Enabled Vision-Language-Action Models for Autonomous Driving},
+  author = {Mohammadreza Teymoorianfard and Jean-Philippe Monteuuis and Jonathan Petit and Amir Houmansadr},
+  year = {2026},
+  month = may,
+  howpublished = {arXiv preprint arXiv:2605.29114},
+  eprint = {2605.29114},
+  archiveprefix = {arXiv},
+  pdf = {https://arxiv.org/pdf/2605.29114},
+  keywords = {autonomous driving, vision-language-action models, robustness, adversarial attacks},
+  description = {The first systematic black-box study of reasoning-enabled VLA models for autonomous driving under realistic textual input corruptions, with a reasoning-aware evaluation framework and benchmark.},
+  abstract = {Vision-Language-Action (VLA) models with integrated reasoning have been proposed for end-to-end autonomous driving, assuming a tight coupling between reasoning and trajectory generation. However, the robustness of such systems under realistic input perturbations remains largely unexplored. We show that these models are highly vulnerable to realistic input perturbations, achieving up to 89% attack success rate (ASR) on reasoning and up to 72% on trajectory manipulation in closed-loop simulation, leading to increased collision rates and degraded safety metrics. Using NVIDIA's recent Alpamayo models as representative industry-developed VLAs, we conduct the first systematic black-box study of reasoning-enabled VLA models under realistic textual input corruptions, evaluating their impact on reasoning and driving behavior. We introduce a reasoning-aware evaluation framework capturing both semantic and structural aspects of reasoning, along with safety-centric measures. We also introduce a benchmark for evaluating attacks and defenses on reasoning-trajectory interactions in autonomous driving. Our results highlight the need for rigorous evaluation and improved defenses to ensure the safety of reasoning-enabled VLA systems in autonomous driving.}
+}
+
+@misc{mittapalli2026trace,
+  title = {TRACE: Trajectory Reasoning through Adaptive Cross-Step Evidence Aggregation for LLM Agents},
+  author = {Vijitha Mittapalli and Shreyaa Jayant Dani and Satya Srujana Pilli and Snigdha Ansu and Mohammadreza Teymoorianfard and Franck Dernoncourt and Hongjie Chen and Yu Wang and Ryan A. Rossi and Nesreen K. Ahmed},
+  year = {2026},
+  month = jun,
+  howpublished = {arXiv preprint arXiv:2606.07054},
+  eprint = {2606.07054},
+  archiveprefix = {arXiv},
+  pdf = {https://arxiv.org/pdf/2606.07054},
+  keywords = {LLM agents, agent monitoring, AI safety},
+  description = {A monitoring framework for long-horizon LLM agent trajectories that links evidence across temporally distant actions through a Triage-Inspect-Judge loop.},
+  abstract = {Autonomous LLM agents can pursue hidden malicious objectives through sequences of individually benign actions, making sabotage difficult to detect using standard trajectory-level monitoring. Existing approaches either evaluate complete trajectories in a single pass or partition them into independently scored windows, limiting their ability to connect evidence across temporally distant actions. We propose TRACE, a monitoring framework for long-horizon LLM agent trajectories. TRACE operates through a TIJ (Triage-Inspect-Judge) loop that identifies high-signal regions, performs targeted inspection while maintaining accumulated evidence across reasoning steps, and synthesizes a trajectory-level verdict. We evaluate TRACE on ten task domains from SHADE-Arena against state-of-the-art baselines. TRACE achieves an aggregate F1 of 0.713 and recall of 0.844, with the largest gains on tasks requiring long-range evidence linking.}
+}
+
+@misc{jeong2025networklevel,
+  title = {Network-Level Prompt and Trait Leakage in Local Research Agents},
+  author = {Hyejun Jeong and Mohammadreza Teymoorianfard and Abhinav Kumar and Amir Houmansadr and Eugene Bagdasarian},
+  year = {2025},
+  month = aug,
+  howpublished = {arXiv preprint arXiv:2508.20282},
+  eprint = {2508.20282},
+  archiveprefix = {arXiv},
+  pdf = {https://arxiv.org/pdf/2508.20282},
+  code = {https://github.com/umass-aisec/wra},
+  keywords = {privacy, web agents, traffic analysis, inference attacks},
+  description = {A prompt and user-trait leakage attack against locally deployed web research agents that uses only network-level metadata such as visited IP addresses and their timings.},
+  abstract = {We show that Web and Research Agents (WRAs) -- language-model-based systems that investigate complex topics on the Internet -- are vulnerable to inference attacks by passive network observers. Deployment of WRAs locally by organizations and individuals for privacy, legal, or financial purposes exposes them to DNS resolvers, malicious ISPs, VPNs, web proxies, and corporate or government firewalls. However, unlike sporadic and scarce web browsing by humans, WRAs visit 70-140 domains per each request with a distinct timing pattern creating unique privacy risks. Specifically, we demonstrate a novel prompt and user trait leakage attack against WRAs that only leverages their network-level metadata (i.e., visited IP addresses and their timings). We start by building a new dataset of WRA traces based on real user search queries and queries generated by synthetic personas. We define a behavioral metric (called OBELS) to comprehensively assess similarity between original and inferred prompts, showing that our attack recovers over 73% of the functional and domain knowledge of user prompts. Extending to a multi-session setting, we recover up to 19 of 32 latent traits with high accuracy. Our attack remains effective under partial observability and noisy conditions. Finally, we discuss mitigation strategies that constrain domain diversity or obfuscate traces, showing negligible utility impact while reducing attack effectiveness by an average of 29%.}
+}
+
+@misc{teymoorianfard2025vidstamp,
+  selected = {true},
+  title = {VidStamp: A Temporally-Aware Watermark for Ownership and Integrity in Video Diffusion Models},
+  author = {Mohammadreza Teymoorianfard and Siddarth Sitaraman and Shiqing Ma and Amir Houmansadr},
+  year = {2025},
+  month = may,
+  howpublished = {arXiv preprint arXiv:2505.01406},
+  eprint = {2505.01406},
+  archiveprefix = {arXiv},
+  pdf = {https://arxiv.org/pdf/2505.01406},
+  code = {https://github.com/SPIN-UMass/VidStamp},
+  keywords = {watermarking, video diffusion models, provenance, tamper localization},
+  description = {A watermarking framework that embeds frame-level messages through the decoder of a latent video diffusion model, enabling high-capacity, imperceptible watermarks and precise temporal tamper localization.},
+  abstract = {Video diffusion models can generate realistic and temporally consistent videos. This raises concerns about provenance, ownership, and integrity. Watermarking can help address these issues by embedding metadata directly into the content. To work well, a watermark needs enough capacity for meaningful metadata. It must also stay imperceptible and remain robust to common video manipulations. Existing methods struggle with limited capacity, extra inference cost, or reduced visual quality. We introduce VidStamp, a watermarking framework that embeds frame-level messages through the decoder of a latent video diffusion model. The decoder is fine-tuned in two stages. The first stage uses static image datasets to encourage spatial message separation. The second stage uses synthesized video sequences to restore temporal consistency. This approach enables high-capacity watermarks with minimal perceptual impact. VidStamp also supports dynamic watermarking through a control signal that selects message templates during inference. This adds flexibility and creates a second channel for communication. We evaluate VidStamp on Stable Video Diffusion (I2V), OpenSora, and Wan (T2V). The system embeds 48 bits per frame while preserving visual quality and staying robust to common distortions. Compared with VideoSeal, VideoShield, and RivaGAN, it achieves lower log P-values and stronger detectability. Its frame-wise watermarking design also enables precise temporal tamper localization, with an accuracy of 0.96, which exceeds the VideoShield baseline.}
+}
+
+@misc{amini2024meansparse,
+  selected = {true},
+  title = {MeanSparse: Post-Training Robustness Enhancement Through Mean-Centered Feature Sparsification},
+  author = {Sajjad Amini and Mohammadreza Teymoorianfard and Shiqing Ma and Amir Houmansadr},
+  year = {2024},
+  month = jun,
+  howpublished = {arXiv preprint arXiv:2406.05927},
+  eprint = {2406.05927},
+  archiveprefix = {arXiv},
+  pdf = {https://arxiv.org/pdf/2406.05927},
+  code = {https://github.com/SPIN-UMass/MeanSparse},
+  keywords = {adversarial robustness, adversarial examples, neural networks},
+  description = {A simple post-processing technique that sparsifies mean-centered features in adversarially trained models, setting new AutoAttack robustness records on CIFAR-10, CIFAR-100, and ImageNet.},
+  abstract = {We present a simple yet effective method to improve the robustness of both Convolutional and attention-based Neural Networks against adversarial examples by post-processing an adversarially trained model. Our technique, MeanSparse, cascades the activation functions of a trained model with novel operators that sparsify mean-centered feature vectors. This is equivalent to reducing feature variations around the mean, and we show that such reduced variations merely affect the model's utility, yet they strongly attenuate the adversarial perturbations and decrease the attacker's success rate. Our experiments show that, when applied to the top models in the RobustBench leaderboard, MeanSparse achieves a new robustness record of 75.28% (from 73.71%), 44.78% (from 42.67%) and 62.12% (from 59.56%) on CIFAR-10, CIFAR-100 and ImageNet, respectively, in terms of AutoAttack accuracy.}
+}

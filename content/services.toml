@@ -1,0 +1,12 @@
+type = "card"
+title = "Services"
+description = "Professional services and community involvement."
+
+# Add entries like this:
+# [[items]]
+# title = "Reviewer"
+# subtitle = "Conference or Journal Name"
+# date = "2025"
+# content = "Description. Markdown is supported."
+
+items = []

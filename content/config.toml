@@ -1,0 +1,66 @@
+[site]
+title = "Mohammadreza Teymoorianfard"
+description = "Ph.D. student in Computer Science at the University of Massachusetts Amherst, working on privacy and security in generative AI."
+favicon = "/favicon.svg"
+last_updated = "October 1, 2026"
+
+[author]
+name = "Mohammadreza Teymoorianfard"
+title = "Ph.D. Student"
+institution = "University of Massachusetts Amherst"
+avatar = "/bio.jpg"
+
+[social]
+# Contact information (leave blank or delete to hide)
+email = "mteymoorianf@umass.edu"
+location = "Amherst, MA, USA"
+google_scholar = "https://scholar.google.com/citations?user=bRB2UaYAAAAJ&hl=en"
+github = "https://github.com/mrteymoorian"
+linkedin = "https://www.linkedin.com/in/teymoorian"
+
+[features]
+# Show a like button on the about page
+enable_likes = false
+
+# Display all subpages on a single page
+enable_one_page_mode = false
+
+[i18n]
+enabled = false
+
+[[navigation]]
+title = "About"
+type = "page"
+target = "about"
+href = "/"
+
+[[navigation]]
+title = "Publications"
+type = "page"
+target = "publications"
+href = "/publications"
+
+[[navigation]]
+title = "Teaching"
+type = "page"
+target = "teaching"
+href = "/teaching"
+
+[[navigation]]
+title = "Awards"
+type = "page"
+target = "awards"
+href = "/awards"
+
+[[navigation]]
+title = "Services"
+type = "page"
+target = "services"
+href = "/services"
+
+# External link: opens the CV PDF directly
+[[navigation]]
+title = "CV"
+type = "link"
+target = "cv"
+href = "/files/My_CV.pdf"

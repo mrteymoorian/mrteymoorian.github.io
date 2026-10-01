@@ -1,0 +1,13 @@
+type = "card"
+title = "Teaching"
+description = "Courses I have taught or assisted with."
+
+# Add entries like this:
+# [[items]]
+# title = "Course Name"
+# subtitle = "Teaching Assistant"
+# date = "Fall 2025"
+# content = "Description of the course and responsibilities. Markdown is supported."
+# tags = ["Graduate", "CS"]
+
+items = []

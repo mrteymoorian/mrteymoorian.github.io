@@ -1,0 +1,12 @@
+type = "card"
+title = "Awards"
+description = "Honors and awards I have received."
+
+# Add entries like this:
+# [[items]]
+# title = "Award Name"
+# subtitle = "Organization"
+# date = "2025"
+# content = "Description of the award. Markdown is supported."
+
+items = []
