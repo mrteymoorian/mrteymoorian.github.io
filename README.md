@@ -13,8 +13,8 @@ Everything lives in `content/`:
 | `content/about.toml` | Homepage sections and the research-interests list |
 | `content/news.toml` | News entries (plain text) |
 | `content/publications.bib` | Publications. Custom fields: `selected`, `pdf`, `code`, `description`, `preview` |
-| `content/teaching.toml`, `awards.toml`, `services.toml` | Card pages; add `[[items]]` blocks (see the commented examples) |
-| `public/files/My_CV.pdf` | The CV linked from the nav bar |
+| `content/service.toml` | Academic Service page (card items for reviewing, teaching, mentoring) |
+| `public/files/Mohammadreza_Teymoorianfard_CV.pdf` | The CV linked from the nav bar |
 | `public/bio.jpg` | Profile photo |
 
 ## Local preview

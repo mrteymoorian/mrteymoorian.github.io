@@ -1,19 +1,18 @@
 [site]
 title = "Mohammadreza Teymoorianfard"
-description = "Ph.D. student in Computer Science at the University of Massachusetts Amherst, working on privacy and security in generative AI."
+description = "Ph.D. candidate in Computer Science at the University of Massachusetts Amherst, working on AI security and safety for embodied and agentic systems."
 favicon = "/favicon.svg"
-last_updated = "October 1, 2026"
+last_updated = "October 7, 2026"
 
 [author]
 name = "Mohammadreza Teymoorianfard"
-title = "Ph.D. Student"
+title = "Ph.D. Candidate"
 institution = "University of Massachusetts Amherst"
 avatar = "/bio.jpg"
 
 [social]
 # Contact information (leave blank or delete to hide)
 email = "mteymoorianf@umass.edu"
-location = "Amherst, MA, USA"
 google_scholar = "https://scholar.google.com/citations?user=bRB2UaYAAAAJ&hl=en"
 github = "https://github.com/mrteymoorian"
 linkedin = "https://www.linkedin.com/in/teymoorian"
@@ -41,26 +40,14 @@ target = "publications"
 href = "/publications"
 
 [[navigation]]
-title = "Teaching"
+title = "Academic Service"
 type = "page"
-target = "teaching"
-href = "/teaching"
-
-[[navigation]]
-title = "Awards"
-type = "page"
-target = "awards"
-href = "/awards"
-
-[[navigation]]
-title = "Services"
-type = "page"
-target = "services"
-href = "/services"
+target = "service"
+href = "/service"
 
 # External link: opens the CV PDF directly
 [[navigation]]
 title = "CV"
 type = "link"
 target = "cv"
-href = "/files/My_CV.pdf"
+href = "/files/Mohammadreza_Teymoorianfard_CV.pdf"

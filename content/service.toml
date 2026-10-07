@@ -1,0 +1,16 @@
+type = "card"
+title = "Academic Service"
+description = "Reviewing, teaching, and mentoring."
+
+[[items]]
+title = "Reviewing"
+content = "Sub-reviewer for ICLR 2026, CVPR 2026, ECCV 2026, NeurIPS 2026"
+
+[[items]]
+title = "Teaching"
+subtitle = "Teaching Assistant, UMass Amherst — 7 terms"
+content = "Machine Learning; Introduction to Programming"
+
+[[items]]
+title = "Mentoring"
+content = "Research mentor to 12 undergraduate students across four UMass URV cohorts; each completed a research project and presented a poster"
