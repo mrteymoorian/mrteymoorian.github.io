@@ -1,21 +1,21 @@
 # Drafted from arXiv posting dates. Edit freely; entries are plain text (no Markdown).
 
 [[news]]
-date = "2026-06"
-content = "TRACE, a monitoring framework for detecting sabotage in long-horizon LLM agent trajectories, is now on arXiv."
+date = "Aug. 2026"
+content = "Attended USENIX Security 2026 in Baltimore, where our work on privacy leakage in local research agents appeared."
 
 [[news]]
-date = "2026-05"
-content = "ReasonBreak, our study of input-perturbation vulnerabilities in reasoning-enabled vision-language-action models for autonomous driving, is now on arXiv."
+date = "Jun. 2026"
+content = "TRACE, our monitoring framework for detecting sabotage in long-horizon LLM agent trajectories, was released on arXiv."
 
 [[news]]
-date = "2025-08"
-content = "Our paper on network-level prompt and trait leakage in local web research agents is now on arXiv."
+date = "May 2026"
+content = "Advanced to Ph.D. candidacy at UMass Amherst."
 
 [[news]]
-date = "2025-05"
-content = "VidStamp, a temporally-aware watermark for video diffusion models, is now on arXiv with code released."
+date = "May 2026"
+content = "ReasonBreak, our study of vulnerabilities in reasoning-enabled vision-language-action models for autonomous driving, was released on arXiv."
 
 [[news]]
-date = "2024-06"
-content = "MeanSparse, a post-training method for improving adversarial robustness, is now on arXiv with code released."
+date = "Jan. 2026"
+content = "Our work on network-level prompt and trait leakage in local research agents was accepted to USENIX Security 2026."
