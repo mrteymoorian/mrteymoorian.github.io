@@ -23,8 +23,10 @@ export async function generateMetadata(): Promise<Metadata> {
     authors: [{ name: config.author.name }],
     creator: config.author.name,
     publisher: config.author.name,
+    // No favicon configured: declare an empty icon so browsers show a blank tab
+    // instead of requesting /favicon.ico.
     icons: {
-      icon: config.site.favicon,
+      icon: config.site.favicon || 'data:,',
     },
     openGraph: {
       type: 'website',
@@ -131,7 +133,6 @@ export default function RootLayout({
   return (
     <html lang={runtimeI18n.defaultLocale} className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <link rel="icon" href={config.site.favicon} type="image/svg+xml" />
         <link
           rel="preload"
           as="font"

@@ -1,8 +1,8 @@
 [site]
 title = "Mohammadreza Teymoorianfard"
 description = "Ph.D. candidate in Computer Science at the University of Massachusetts Amherst, working on AI security and safety for embodied and agentic systems."
-favicon = "/favicon.svg"
-last_updated = "October 7, 2026"
+# favicon = "/favicon.svg"   # uncomment and add the file to public/ to show a tab icon
+last_updated = "October 8, 2026"
 
 [author]
 name = "Mohammadreza Teymoorianfard"
