@@ -1,0 +1,265 @@
+type = "projects"
+title = "Projects"
+description = "A closer look at the problems I work on: what each project asks, how we approached it, and what we found. Figures are taken from the papers."
+
+# Each [[items]] block is one project. `content` is Markdown; use ### headings for sections.
+# Figures live in public/projects/. The first figure is shown full width above the write-up,
+# the rest in a grid below it. width/height are the image's pixel dimensions.
+
+# ---------------------------------------------------------------------------
+[[items]]
+id = "huddle"
+short = "HUDDLE"
+title = "Visual Grounding and Deliberation Help Multi-Robot Teams Make High-Stakes Decisions"
+venue = "Under review"
+year = 2026
+tags = ["Embodied AI", "Multi-agent", "VLMs", "Safety"]
+summary = "A benchmark and a structured deliberation protocol for teams of VLM-driven robots that must jointly decide whether an action is safe when the evidence is split across robots. Collaboration with Qualcomm."
+
+stats = [
+  { value = "3 × 12", label = "environments × balanced instances" },
+  { value = "5", label = "frontier VLMs evaluated" },
+  { value = "+42 pp", label = "largest accuracy gain from HUDDLE" },
+  { value = "96%", label = "best team accuracy" },
+]
+
+figures = [
+  { src = "/projects/huddle-benchmark.webp", width = 912, height = 567, caption = "The three environments. Each robot holds a camera view and possibly a private fact; the evidence chain on the right must be assembled across robots to reach HOLD. In the bedroom, the chain also requires sequential camera moves." },
+  { src = "/projects/huddle-protocol.webp", width = 1095, height = 564, wide = true, caption = "The HUDDLE protocol: two pooling stages, two processing stages and an optional Challenge safeguard. When robots can act, planned moves are announced and reviewed before execution." },
+  { src = "/projects/huddle-traces.webp", width = 1212, height = 654, wide = true, caption = "Representative traces. Open Deliberation fails when evidence is kept private, dismissed or acted on too early; HUDDLE surfaces the same evidence in its Grounding, Share and Assess stages." },
+  { src = "/projects/huddle-results.webp", width = 1092, height = 669, wide = true, caption = "(a) Decision accuracy for five models in three environments. (b) Pooling and processing failure rates, Open Deliberation → HUDDLE with safeguard." },
+]
+
+content = '''
+### The problem
+
+As VLM-powered generalist robots move into homes, several robots will often share a task while each sees only part of the scene. We study the hardest version of that setting: a routine instruction hides a latent hazard, no single robot can see enough to catch it, and the team has to decide together whether to **PROCEED** or **HOLD**. We model this as a finite-horizon Dec-POMDP with explicit communication. Each round, every robot receives its camera image, any private context and the messages from the previous round; it may post a message, move its camera (in the bedroom) and vote. The team decision is the majority of the latest votes.
+
+### Benchmark
+
+Three household environments, 12 balanced instances each:
+
+- **Kitchen**: serve a sandwich. Hazard: spoilage or an allergy. The hazard rule is stated explicitly and all evidence is available from the start; it only has to be pooled in the right order.
+- **Living room**: move a table into a children's room. Hazard: a sharp or chokable object within a toddler's reach. The rule must be inferred from world knowledge, and observations can appear to conflict.
+- **Bedroom**: deliver bedtime medication. Hazard: a duplicate dose or wrong formulation. Evidence is spread across a directory, a plan, package labels and a care record, and each robot has only two camera moves, so the team must decide who reads what, and in which order.
+
+Instances vary the hazard, the distractor objects and the private context so that no fixed visual pattern or default action gives the right answer.
+
+### Where open deliberation breaks
+
+With unstructured multi-round discussion, mean accuracy over five frontier VLMs (Claude Sonnet 4.6, GPT-5.6 luna, Gemini 3.5 Flash-Lite, Qwen3.8 27B, Grok 4.3) falls from 0.75 in the kitchen to 0.61 in the living room and 0.49 in the bedroom, close to chance. To see why, we audit every interaction trace with two LLM judges, validated against human annotators, and attribute each wrong decision to the earliest break in the evidence chain: **pooling** failures (never obtained, never shared, shared late) or **processing** failures (ignored, contested and lost, wrong reasoning). The dominant failure shifts by environment. In the kitchen a decisive fact is simply never shared in 62% of incorrect runs; in the bedroom the required reading is never obtained in 88% and arrives late in 87%. A full-information diagnostic, where every robot sees everything, lifts living-room accuracy to 88–100%, so the models can solve the task; what fails is moving evidence through the team. Prompting strategies, communication topologies, larger teams, more rounds and alternative aggregation rules do not consistently help.
+
+### HUDDLE
+
+HUDDLE borrows from human safety-critical teamwork (surgical checklists, crew resource management, the two-challenge rule) and turns it into a fixed, task-agnostic staged protocol:
+
+1. **Grounding**: each robot asks targeted questions about what is ambiguous in its own view; teammates answer only when they hold the evidence.
+2. **Share**: robots post their private facts first, then at most three safety-relevant observations. No votes yet, so evidence reaches the board before anyone commits.
+3. **Assess**: each robot labels every task condition *satisfied*, *failed* or *unknown* from reported evidence only, and writes an ordered plan for resolving unknowns: who reads what, and what they need to know first.
+4. **Discuss**: robots revise votes as evidence arrives. When robots can act, a camera move is announced with its purpose, reviewed by teammates, and only then carried out.
+5. **Challenge** (optional safeguard): a robot that still votes for the conservative action after being challenged can stop the team.
+
+The protocol never tells robots what the conditions or the evidence chain are; they infer those from the task.
+
+### Results
+
+HUDDLE with the safeguard improves mean accuracy for every model in every environment: by 3–18 points in the kitchen, 12–38 in the living room and 13–42 in the bedroom, where Sonnet 4.6 goes from 0.42 to 0.92. The targeted failures shrink accordingly: *never shared* drops from 0.62 to 0.05 in the kitchen, and in the bedroom *never obtained* falls from 0.88 to 0.37 and *ignored* from 0.38 to 0.04. Premature camera moves, which happened in every open-deliberation bedroom episode, fall to zero for one of the robots with Sonnet 4.6. What HUDDLE cannot fix is wrong evidence: decisions driven by hallucination or visual misperception persist at similar rates under both pipelines.
+'''
+
+# ---------------------------------------------------------------------------
+[[items]]
+id = "reasonbreak"
+short = "ReasonBreak"
+title = "ReasonBreak: Probing Vulnerabilities in Reasoning-Enabled Vision-Language-Action Models for Autonomous Driving"
+venue = "arXiv preprint"
+year = 2026
+tags = ["Autonomous driving", "VLA models", "Adversarial robustness", "Reasoning"]
+paper = "https://arxiv.org/abs/2605.29114"
+summary = "A black-box evaluation framework and benchmark for reasoning-enabled driving VLAs, showing that small textual perturbations can rewrite a model's reasoning, bend its trajectory and degrade closed-loop safety. Collaboration with Qualcomm."
+
+stats = [
+  { value = "3", label = "reasoning-enabled driving VLAs" },
+  { value = "100%", label = "peak open-loop reasoning ASR" },
+  { value = "72%", label = "closed-loop trajectory ASR" },
+  { value = "≈ 0.02", label = "correlation between reasoning drift and trajectory deviation" },
+]
+
+figures = [
+  { src = "/projects/reasonbreak-pipeline.webp", width = 1140, height = 561, caption = "The ReasonBreak pipeline. A perturbed input is fed to the VLA. Reasoning is decomposed into object, relation, implication and planning and checked for semantic drift, token inflation (slowdown) or missing output (DoS); the trajectory is checked for excess deviation; successful attacks are then scored on downstream safety." },
+  { src = "/projects/reasonbreak-correlation.webp", width = 393, height = 333, caption = "Alpamayo1, open loop: the four reasoning fields are strongly correlated with each other but almost uncorrelated with trajectory deviation (Δ min ADE)." },
+  { src = "/projects/reasonbreak-latency.webp", width = 498, height = 393, caption = "Inference latency grows linearly with the number of reasoning tokens, so a slowdown attack is also a latency attack." },
+  { src = "/projects/reasonbreak-safety.webp", width = 1212, height = 717, wide = true, caption = "Closed-loop safety impact of successful trajectory attacks. Off-diagonal cells are incidents introduced (red) or removed (green) by the perturbation relative to the benign rollout." },
+]
+
+content = '''
+### The problem
+
+Reasoning-enabled vision-language-action (VLA) models such as NVIDIA's Alpamayo family produce a short chain of reasoning and a driving trajectory from the same forward pass, on the assumption that the two are tightly coupled. Nobody had asked what happens to that coupling under input perturbation, and in driving a wrong output is not a task error but a safety violation. ReasonBreak is the first systematic study of reasoning as an attack surface in VLA-based autonomous driving.
+
+### Framework
+
+A reasoning-enabled VLA maps an input to a pair (reasoning, trajectory). We measure how a perturbed input changes each surface, how the two changes relate, and whether they lead to unsafe driving:
+
+- **Semantic reasoning change.** An LLM evaluator, validated against other judges and human ratings, decomposes each reasoning string into *object*, *relation*, *implication* and *planning*, and scores the deviation of each field from the benign output.
+- **Structural reasoning change.** *Slowdown*, where the perturbed reasoning is much longer than the benign one, and *denial of service*, where the model emits no reasoning at all.
+- **Trajectory degradation.** Excess error over the benign run: ADE against ground truth in open loop, and the distance between the realized and reference ego position in closed loop.
+- **Closed-loop success** is declared only when the excess deviation stays above threshold over a contiguous window, so simulator noise and nominal drift are not counted.
+- **Safety impact** is scored separately for successful attacks: collision, near-encounter and minimum time-to-collision in open loop; collision, off-road and wrong-lane events in closed loop.
+
+### Threat model
+
+The adversary is query-based and black-box: no weights, gradients, logits or confidence scores, and no control over cameras or other sensors. It can only write to the textual input channel, the navigation instruction that may arrive from speech-to-text, an in-vehicle interface or a ride-sharing app, and we restrict it to semantics-preserving surface-form edits: capitalization changes, word scrambling and character noise. In open loop the attacker runs Best-of-N sampling against the target-specific success condition. In closed loop a single random perturbation is applied at every simulation step, so there is no search at all.
+
+### Results
+
+Evaluated on Alpamayo1 and Alpamayo1.5 (195 NVIDIA Physical AI scenes in open loop; 50 NuRec clips in AlpaSim in closed loop) and on AutoVLA (nuScenes mini_val):
+
+- **Both surfaces are manipulable.** Open-loop semantic reasoning ASR reaches 0.76–0.89 on Alpamayo1 and 0.96–1.00 on AutoVLA, which also suffers a DoS ASR of 1.0 and a trajectory ASR of 0.91. Alpamayo1.5, which adds RL post-training, is more robust semantically (0.42–0.63) but more sensitive to slowdown.
+- **Reasoning and action are only weakly coupled.** Reasoning drift and trajectory deviation are nearly uncorrelated (about 0.02 for Alpamayo1), while the four reasoning fields correlate at 0.7–0.96 with each other. Manipulated reasoning often leaves the trajectory untouched, and large trajectory deviations occur with little reasoning change.
+- **Closed loop.** Trajectory manipulation is the most effective attack, with 72% ASR on Alpamayo1 and 48% on Alpamayo1.5; semantic reasoning attacks still reach 48–62% and 40–44%. Successful attacks introduce new collisions, off-road and wrong-lane events, and bring failures forward in time when the benign rollout was already unsafe.
+- **Latency.** Reasoning length maps linearly to inference time, so slowdown attacks have a real-time cost.
+
+The benchmark and dataset, mapping input conditions to reasoning outputs and safety outcomes, are released for evaluating future attacks and defenses.
+'''
+
+# ---------------------------------------------------------------------------
+[[items]]
+id = "agent-leakage"
+short = "Agent leakage"
+title = "Network-Level Prompt and Trait Leakage in Local Research Agents"
+venue = "USENIX Security"
+year = 2026
+tags = ["Privacy", "AI agents", "Traffic analysis", "Inference attacks"]
+paper = "https://www.usenix.org/conference/usenixsecurity26/presentation/jeong"
+code = "https://github.com/umass-aisec/wra"
+summary = "Locally deployed web research agents visit 70–140 domains per prompt. We show that a passive network observer who sees only those domain names and their timing can reconstruct what the user asked and infer who they are, and we evaluate defenses."
+
+stats = [
+  { value = "70–140", label = "domains visited per request" },
+  { value = "> 73%", label = "of functional and domain intent recovered" },
+  { value = "19 / 32", label = "latent traits recovered after a week of sessions" },
+  { value = "−29%", label = "average attack effectiveness under our defenses" },
+]
+
+figures = [
+  { src = "/projects/wra-overview.webp", width = 1536, height = 1077, caption = "Overview. The user prompt is never visible, but the agent's domain sequence lets the observer reconstruct a functionally equivalent prompt and infer personal traits. Existing text-similarity metrics under-report this leakage; OBELS captures it." },
+  { src = "/projects/wra-pipeline.webp", width = 744, height = 423, caption = "Two-stage attack. The adversary first builds an inference model from proxy prompts and their traces, then applies it to observed traces of real users." },
+  { src = "/projects/wra-traits.webp", width = 744, height = 558, caption = "The fifteen traits most exposed by a week of agent browsing (mean similarity between inferred and true values across personas)." },
+]
+
+content = '''
+### The problem
+
+Web and research agents (WRAs) such as GPT Researcher, AutoGen or Browser-Use take a prompt, decompose it, search, visit dozens of sites and synthesize a report. Running them locally is often sold as the privacy-preserving option: no prompt leaves the machine. But the agent's browsing does. Unlike a human session, which touches a handful of sites at an irregular pace, a single agent run traverses 40–100 distinct domains in a dense, machine-paced burst, and we show that this traffic is separable from human browsing with 97.9% accuracy. DNS resolvers, ISPs, VPN providers and corporate firewalls all see it.
+
+### Threat model and attacks
+
+The adversary is strictly passive and sees only network metadata: domain names (from DNS or TLS SNI), their order, and coarse timing and payload sizes. No URLs, page contents, prompts or model internals. Two goals:
+
+- **Prompt recovery**: reconstruct a prompt that is functionally equivalent to the user's from one session's trace.
+- **Trait inference**: profile latent attributes (sex, religion, political views, income, health insurance, and so on) from several sessions linked over time.
+
+Both follow the same two-stage pipeline. Offline, the adversary generates realistic proxy prompts, from TREC query sets or from synthetic personas with chosen traits, runs the agent on them to collect (trace, prompt) or (trace, traits) pairs, filters ad and tracker domains, and builds an inference model by in-context learning or fine-tuning. Online, the model is applied to a new trace.
+
+### OBELS: measuring the leakage that matters
+
+Sentence-embedding similarity and LLM-as-judge scores measure what prompts *say*, not what they make the agent *do*. "Compare Italy and Spain's digital nomad visas" and "How do work visas differ across southern Europe?" score low, yet drive the agent to the same portals. OBELS abstracts both prompts into (intent, source type, entity) triplets and scores four dimensions separately: functional equivalence, domain-type equivalence, semantic equivalence and entity-granularity tolerance.
+
+### Results
+
+- **Prompts leak.** With 5-shot in-context learning on GPT-Researcher traces, the attack recovers 77% of functional intent and 74% of domain type (OBELS) from domain names alone. In-context learning beats fine-tuning across five inference LLMs. Agents built on local backbones (DeepSeek, Mistral) leak slightly less than GPT-4-backed ones, but still enough.
+- **Robust to weak visibility.** Accuracy holds when 40% of domains are hidden, and adding timing metadata brings no consistent gain: domain identity is the signal. URL-level visibility leaks more still.
+- **Traits leak.** Over a simulated week of seven sessions, the adversary infers health insurance (0.98), veteran status (0.90), employment status (0.88) and household language (0.86) with near-perfect accuracy; sex, race, religion and political views score 0.70–0.77. Seven sessions reveal 12–14 high-confidence traits per persona, up to 19 of 32, and traits never mentioned in the prompts are still inferred at moderate accuracy.
+- **Utility does not need this.** Report quality stays flat down to 10% domain visibility, so most of the extra domains an agent visits add exposure without adding value.
+
+### Defenses
+
+Two families: **hiding** and **blocking**. Hiding runs LLM-generated decoy prompts in parallel with the real one, optionally steered by a virtual persona that conflicts with the user's estimated traits. Five decoys cut LLM-judge prompt-recovery accuracy from 0.415 to 0.175 and functional OBELS from 0.77 to 0.57; trait-conflicting personas reduce occupational trait inference by 24%. Blocking redirects tasks to multipurpose sources (Wikipedia, StackExchange) or the model's own knowledge so that unique domains are never contacted. Across settings the defenses reduce attack effectiveness by 29% on average with negligible utility loss, but residual leakage remains; only full network-level protection closes the channel.
+'''
+
+# ---------------------------------------------------------------------------
+[[items]]
+id = "vidstamp"
+short = "VidStamp"
+title = "VidStamp: A Temporally-Aware Watermark for Ownership and Integrity in Video Diffusion Models"
+venue = "arXiv preprint"
+year = 2025
+tags = ["Watermarking", "Video diffusion", "Provenance", "Content integrity"]
+paper = "https://arxiv.org/abs/2505.01406"
+code = "https://github.com/SPIN-UMass/VidStamp"
+summary = "A watermark embedded by the decoder of a latent video diffusion model itself, giving every frame its own 48-bit message at zero inference cost, so a video can prove its origin and reveal exactly where it was tampered with."
+
+stats = [
+  { value = "48 bits", label = "per frame, embedded during generation" },
+  { value = "768 bits", label = "per 16-frame SVD video (VideoSeal: 96)" },
+  { value = "−166.65", label = "log P-value, strongest of all baselines" },
+  { value = "0.96", label = "frame-level tamper localization accuracy" },
+]
+
+figures = [
+  { src = "/projects/vidstamp-pipeline.webp", width = 1290, height = 372, caption = "Training pipeline. Only the temporally aware decoder is fine-tuned; a frozen HiDDeN extractor supervises per-frame message recovery (BCE loss) while a Watson-VGG loss preserves perceptual quality. In dynamic mode a latent message adder injects a control sequence that selects a message template per frame." },
+  { src = "/projects/vidstamp-threat.webp", width = 648, height = 474, caption = "Threat model. The model owner watermarks during generation; a third party verifies ownership and user keys, and an operator detects frame-level manipulation, all with the public extractor." },
+  { src = "/projects/vidstamp-robustness.webp", width = 618, height = 585, caption = "Bit accuracy under 11 common distortions on Stable Video Diffusion, against VideoShield, VideoSeal and RivaGAN. The LDPC variant trades capacity for extra robustness." },
+]
+
+content = '''
+### The problem
+
+Post-hoc video watermarks add a neural pass per video, which is a real cost at production scale and a blocker for streaming generation. Existing in-generation methods have low capacity or hurt quality. And treating a watermark as a yes/no detector wastes it: a video has many frames, each of which could carry its own message, which would turn the watermark into a channel for metadata *and* a frame-level integrity check.
+
+### Method
+
+VidStamp follows Stable Signature's idea of fine-tuning the latent decoder, but exploits the 3D convolutions and temporal attention of video decoders so that each frame can carry a distinct message consistently:
+
+- **Supervision.** A pretrained HiDDeN extractor stays frozen and decodes each frame; a BCE message loss is combined with a Watson-VGG perceptual loss. Only the decoder is updated.
+- **Two-stage fine-tuning.** Stage one trains on COCO images treated as pseudo-videos, which teaches spatial message separation. Stage two fine-tunes on videos generated by the same diffusion model to restore temporal consistency. The second stage matters: clean bit accuracy rises from 0.70 to 0.98.
+- **Static and dynamic modes.** In static mode the message sequence is baked into the decoder. In dynamic mode a lightweight latent message adder injects an index sequence at inference time, so templates can be selected per frame without retraining, creating a second communication channel.
+- **Error correction.** Part of the 48-bit budget can hold an LDPC code (16 data + 32 parity bits), raising word accuracy to 0.95 or more under several distortions.
+- **Tamper localization.** Each extracted message is matched to the reference keys by Hamming similarity; frames below threshold are flagged as inserted, and the aligned order exposes drops and swaps.
+
+### Results
+
+On Stable Video Diffusion (image-to-video), OpenSora and Wan (text-to-video), VidStamp reaches bit accuracies of 0.95, 0.98 and 0.93 while embedding 48 bits per frame. On SVD that is 768 bits per video, versus 512 for VideoShield, 96 for VideoSeal and 32 for RivaGAN; its log P-value of −166.65 is the lowest (strongest) of all methods, and its VBench quality score (0.836) is indistinguishable from the unwatermarked model (0.838). Under 11 distortions it has the best overall log P, and in tamper localization it averages 0.96 across frame swaps, insertions and drops against 0.936 for VideoShield, with over 95% accuracy under combined attacks.
+'''
+
+# ---------------------------------------------------------------------------
+[[items]]
+id = "meansparse"
+short = "MeanSparse"
+title = "MeanSparse: Post-Training Robustness Enhancement Through Mean-Centered Feature Sparsification"
+venue = "arXiv preprint"
+year = 2024
+tags = ["Adversarial robustness", "Computer vision", "Post-training"]
+paper = "https://arxiv.org/abs/2406.05927"
+code = "https://github.com/SPIN-UMass/MeanSparse"
+summary = "A post-training operator that zeroes out small variations around each feature channel's mean. Applied to the top RobustBench models, it set new AutoAttack records on CIFAR-10, CIFAR-100 and ImageNet with no retraining and no measurable change in clean accuracy."
+
+stats = [
+  { value = "75.28%", label = "CIFAR-10 AutoAttack accuracy (from 73.71%)" },
+  { value = "62.12%", label = "ImageNet AutoAttack accuracy (from 59.56%)" },
+  { value = "44.78%", label = "CIFAR-100 AutoAttack accuracy (from 42.67%)" },
+  { value = "1 pass", label = "over the training set to calibrate" },
+]
+
+figures = [
+  { src = "/projects/meansparse-operator.webp", width = 1260, height = 822, caption = "The operator. Left: per-channel mean and standard deviation from the training set define a dead zone of width 2ασ around the mean. Middle and right: features inside the zone are snapped to the mean; everything else passes through unchanged." },
+  { src = "/projects/meansparse-results.webp", width = 1086, height = 1077, caption = "Clean vs. AutoAttack accuracy before and after MeanSparse for the leading RobustBench models on CIFAR-10 (ℓ∞ and ℓ2), ImageNet and CIFAR-100." },
+]
+
+content = '''
+### The idea
+
+Adversarial training weakens non-robust features but does not remove them: they survive as small variations in the feature maps. The most probable region of a feature's distribution, the neighbourhood of its mean, is also the least informative one, so blocking that neighbourhood should cost the model little while taking away capacity the attacker relies on.
+
+### The operator
+
+For each channel we compute the mean µ and standard deviation σ over the training set in a single forward pass. At inference, a value within µ ± ασ is replaced by µ; anything outside passes through unchanged. The rule falls out of the proximal operator of an ℓ0 penalty on mean-centered features, so it has a clean optimization interpretation, and scaling the threshold by σ means a single α works for every layer. We tried training with the operator in the loop, but the dead zone zeroes gradients exactly where most features live and training becomes unstable. The post-training recipe (freeze the weights, insert the operator before every activation, calibrate the statistics, sweep α) is what makes it practical for large models.
+
+### Results
+
+Applied to the top entries of RobustBench, MeanSparse raised ℓ∞ AutoAttack accuracy from 73.71% to 75.28% on CIFAR-10 (WideResNet-94-16), from 42.67% to 44.78% on CIFAR-100 and from 59.56% to 62.12% on ImageNet (Swin-L), and ℓ2 accuracy on CIFAR-10 from 84.97% to 87.28%, taking the first rank in all four settings at the time of release. Clean accuracy changes by at most 0.3 points, and by less than 0.1 on the record-setting models. An α around 0.2–0.25 is the sweet spot across architectures; larger values start eating into clean accuracy. Calibration takes 102 seconds on CIFAR-10 and about 90–100 minutes on ImageNet-1k, and evaluation time grows by 2–3%.
+
+### Beyond gradient-based attacks
+
+The operator is piecewise constant, so we checked that the gain is not an artifact of gradient masking. The improvement holds across activation functions (ReLU, GELU, PSSiLU and others) on a ResNet-18 and under the gradient-free Square attack, and the paper also evaluates an adaptive PGD variant that explicitly penalizes perturbations the operator would absorb.
+'''

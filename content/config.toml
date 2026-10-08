@@ -40,6 +40,12 @@ target = "publications"
 href = "/publications"
 
 [[navigation]]
+title = "Projects"
+type = "page"
+target = "projects"
+href = "/projects"
+
+[[navigation]]
 title = "Academic Service"
 type = "page"
 target = "service"

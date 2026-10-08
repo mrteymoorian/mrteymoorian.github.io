@@ -13,6 +13,7 @@ Everything lives in `content/`:
 | `content/about.toml` | Homepage sections and the research-interests list |
 | `content/news.toml` | News entries (plain text) |
 | `content/publications.bib` | Publications. Custom fields: `selected`, `pdf`, `code`, `description`, `preview` |
+| `content/projects.toml` | Projects page: one `[[items]]` block per project with a Markdown `content` body, stat tiles, and figures from `public/projects/` |
 | `content/service.toml` | Academic Service page (card items for reviewing, teaching, mentoring) |
 | `public/files/Mohammadreza_Teymoorianfard_CV.pdf` | The CV linked from the nav bar |
 | `public/bio.jpg` | Profile photo |
