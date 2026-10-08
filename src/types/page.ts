@@ -49,6 +49,8 @@ export interface ProjectItem {
     title: string;
     /** Short label for the in-page jump list; falls back to title. */
     short?: string;
+    /** Card thumbnail; defaults to the first figure. */
+    thumbnail?: ProjectFigure;
     venue?: string;
     year?: string | number;
     status?: string;

@@ -1,10 +1,11 @@
 type = "projects"
 title = "Projects"
-description = "A closer look at the problems I work on: what each project asks, how we approached it, and what we found. Figures are taken from the papers."
+description = "A closer look at the problems I work on. Click a project to see what it asks, how we approached it, and what we found. Figures are taken from the papers."
 
 # Each [[items]] block is one project. `content` is Markdown; use ### headings for sections.
 # Figures live in public/projects/. The first figure is shown full width above the write-up,
-# the rest in a grid below it. width/height are the image's pixel dimensions.
+# the rest in a grid below it. The first figure is also the card thumbnail unless `thumbnail` is set.
+# width/height are the image's pixel dimensions.
 
 # ---------------------------------------------------------------------------
 [[items]]
@@ -187,6 +188,7 @@ year = 2025
 tags = ["Watermarking", "Video diffusion", "Provenance", "Content integrity"]
 paper = "https://arxiv.org/abs/2505.01406"
 code = "https://github.com/SPIN-UMass/VidStamp"
+thumbnail = { src = "/projects/vidstamp-threat.webp", width = 648, height = 474 }
 summary = "A watermark embedded by the decoder of a latent video diffusion model itself, giving every frame its own 48-bit message at zero inference cost, so a video can prove its origin and reveal exactly where it was tampered with."
 
 stats = [
