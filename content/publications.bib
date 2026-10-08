@@ -6,6 +6,29 @@
 %   preview     = {file}   -> image in public/papers/
 % Author matching "Mohammadreza Teymoorianfard" is highlighted automatically.
 
+@misc{teymoorianfard2026huddle,
+  selected = {true},
+  title = {Visual Grounding and Deliberation Help Multi-Robot Teams Make High-Stakes Decisions},
+  author = {Mohammadreza Teymoorianfard and Saaduddin Mahmud and Jean-Philippe Monteuuis and Jonathan Petit and Shlomo Zilberstein and Amir Houmansadr and Eugene Bagdasarian},
+  year = {2026},
+  month = oct,
+  howpublished = {Under review},
+  keywords = {multi-robot systems, vision-language models, embodied AI, safety, multi-agent communication},
+  description = {A benchmark for multi-robot safety decisions under distributed information, and HUDDLE, a structured deliberation protocol that raises team accuracy to up to 96%.},
+  abstract = {Humans have developed communication skills to disambiguate and coordinate during high-stakes collaborative tasks. Whether teams of robotic systems can do the same remains unclear, especially when no single robot has full access to the information necessary to make the correct decision. With recent developments in Vision-Language Model (VLM)-powered generalist robotic systems, such scenarios are becoming prevalent and have raised serious safety concerns. To address the gap in understanding such systems, we study this problem with a benchmark across three household environments modeled as Dec-POMDPs with communication, in which a team of robots must jointly decide whether a proposed action should PROCEED or HOLD. We find that unstructured communication is unreliable: team accuracy can fall to chance level, and common changes to prompting, communication topology, team size, and interaction rounds do not consistently resolve these failures. Further, an idealized full-information diagnostic, in which every robot receives all observations and local context, raises accuracy to 100% in some settings, indicating that handling distributed evidence is a major source of error. To address this, we introduce a structured deliberation protocol, called HUDDLE, that requires robots to explicitly share local context, ground visual claims in observations, and assess the pooled evidence before deciding. HUDDLE substantially improves decision accuracy, reaching up to 96% in our best setting. These findings highlight communication skills as the key bottleneck for reliable multi-robot decision-making and provide a foundation for designing safer, more collaborative autonomous systems in partially observable environments.}
+}
+
+@misc{naseh2026rethinking,
+  title = {Rethinking Image Watermarking in the Era of Frontier Generative Models},
+  author = {Ali Naseh and Mohammadreza Teymoorianfard and Amir Houmansadr},
+  year = {2026},
+  month = oct,
+  howpublished = {Under review},
+  keywords = {image watermarking, generative models, provenance, watermark removal, content-based watermarking},
+  description = {An API-only regeneration attack with GPT-Image-2 that removes 89% of watermarks across 13 methods, a concept-extraction attack on IConMark, and K-SemMark-R, a registry-based content watermark that resists regeneration.},
+  abstract = {Image watermarks are increasingly used to establish the provenance of AI-generated content. We demonstrate a watermark-removal attack that repeatedly regenerates a watermarked image with GPT-Image-2. The attack requires only API access, without knowledge of the watermarking method, detector access, or local model deployment. It achieves 89% average removal across 13 post-hoc and in-generation methods, with a removal-fidelity trade-off comparable to leading specialized attacks. The evaluated content-based watermarks resist regeneration. However, we show that an existing method that inserts visual concepts from a fixed private inventory is vulnerable to concept extraction. Our extraction attack recovers 79% of its concepts from 3,000 watermarked images. The recovered candidates enable 93.9% removal after ten targeted edits, at a cost to image fidelity, and 70.4% spoofing success when generating images outside the watermarking system. We propose K-SemMark-R, a registered content-based watermark that independently samples prompt-compatible carrier values for each image and stores verified carriers in a private registry. Experiments show that most initially detected images remain detectable by carrier verification after regeneration, although the method does not enroll every prompt. These findings highlight the potential of content-based watermarking and motivate research into image-specific designs that resist regeneration without relying on a shared concept inventory.}
+}
+
 @misc{teymoorianfard2026reasonbreak,
   selected = {true},
   title = {ReasonBreak: Probing Vulnerabilities in Reasoning-Enabled Vision-Language-Action Models for Autonomous Driving},
@@ -35,12 +58,12 @@
   abstract = {Autonomous LLM agents can pursue hidden malicious objectives through sequences of individually benign actions, making sabotage difficult to detect using standard trajectory-level monitoring. Existing approaches either evaluate complete trajectories in a single pass or partition them into independently scored windows, limiting their ability to connect evidence across temporally distant actions. We propose TRACE, a monitoring framework for long-horizon LLM agent trajectories. TRACE operates through a TIJ (Triage-Inspect-Judge) loop that identifies high-signal regions, performs targeted inspection while maintaining accumulated evidence across reasoning steps, and synthesizes a trajectory-level verdict. We evaluate TRACE on ten task domains from SHADE-Arena against state-of-the-art baselines. TRACE achieves an aggregate F1 of 0.713 and recall of 0.844, with the largest gains on tasks requiring long-range evidence linking.}
 }
 
-@misc{jeong2025networklevel,
+@inproceedings{jeong2026networklevel,
+  selected = {true},
   title = {Network-Level Prompt and Trait Leakage in Local Research Agents},
   author = {Hyejun Jeong and Mohammadreza Teymoorianfard and Abhinav Kumar and Amir Houmansadr and Eugene Bagdasarian},
-  year = {2025},
-  month = aug,
-  howpublished = {arXiv preprint arXiv:2508.20282},
+  booktitle = {USENIX Security Symposium},
+  year = {2026},
   eprint = {2508.20282},
   archiveprefix = {arXiv},
   pdf = {https://arxiv.org/pdf/2508.20282},
@@ -51,7 +74,6 @@
 }
 
 @misc{teymoorianfard2025vidstamp,
-  selected = {true},
   title = {VidStamp: A Temporally-Aware Watermark for Ownership and Integrity in Video Diffusion Models},
   author = {Mohammadreza Teymoorianfard and Siddarth Sitaraman and Shiqing Ma and Amir Houmansadr},
   year = {2025},
@@ -67,7 +89,6 @@
 }
 
 @misc{amini2024meansparse,
-  selected = {true},
   title = {MeanSparse: Post-Training Robustness Enhancement Through Mean-Centered Feature Sparsification},
   author = {Sajjad Amini and Mohammadreza Teymoorianfard and Shiqing Ma and Amir Houmansadr},
   year = {2024},
