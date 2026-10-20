@@ -4,4 +4,4 @@
 
 My work has been published at USENIX Security and includes collaborations with researchers at Qualcomm and Cisco.
 
-💼 I am looking for research and ML internships for Summer 2027, in AI security, safety, and robustness for embodied and agentic AI (autonomous driving, robotics, and LLM agents). Feel free to reach out by [email](mailto:mteymoorianf@umass.edu).
+💼 I am looking for research and ML internships for Summer 2027, in AI security, safety, and robustness for embodied and agentic AI. Feel free to reach out by [email](mailto:mteymoorianf@umass.edu).
