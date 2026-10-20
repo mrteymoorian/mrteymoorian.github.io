@@ -3,3 +3,5 @@
 🔬 My research focuses on the security and safety of AI systems that reason, interact, and act in the world. I study vulnerabilities in autonomous and embodied systems, including AI agents, vision-language models (VLMs), vision-language-action (VLA) models, and multi-agent systems. I also work on privacy and provenance in generative AI.
 
 My work has been published at USENIX Security and includes collaborations with researchers at Qualcomm and Cisco.
+
+💼 I am looking for research and ML internships for Summer 2027, in AI security, safety, and robustness for embodied and agentic AI (autonomous driving, robotics, and LLM agents). Feel free to reach out by [email](mailto:mteymoorianf@umass.edu).
